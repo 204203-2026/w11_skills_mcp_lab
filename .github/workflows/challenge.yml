@@ -1,0 +1,33 @@
+name: Challenge (bonus) — w11_skills_mcp_lab
+on:
+  push:
+    branches: [main, master]
+permissions:
+  contents: read
+jobs:
+  challenge:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@v6
+        continue-on-error: true
+        with:
+          version: "0.12.7"
+      - name: Recompute bonus results
+        continue-on-error: true
+        run: |
+          bash init.sh || echo "init failed; continuing to bonus report"
+          bash check.sh
+          cat results/challenge_report.json
+      - name: Upload challenge result
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: challenge_report
+          path: results/challenge_report.json
+          if-no-files-found: warn
