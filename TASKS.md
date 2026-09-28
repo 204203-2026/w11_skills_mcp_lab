@@ -9,6 +9,9 @@ choice** — Track A (a local machine: the lab machine or your own Ubuntu/Mac)
 or Track B (your own VM over SSH). Step 0 sets up either one. Grading is
 identical on both.
 
+**Scoring:** 7 required checks, 1 point each (`results/report.json`); bonus lives in
+`results/challenge_report.json` and never affects the grade.
+
 This app is vulnerable on purpose. Your job is the **evaluator around the
 app**: a skill, a scanner, a test that proves one fix, and outside tools with
 limited permissions. Use only fake lab credentials and keep the server on
